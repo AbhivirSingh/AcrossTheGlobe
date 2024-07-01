@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="Union 1.svg">
+    <title>Across The Globe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            font-family: 'IBM Plex Sans', sans-serif;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        header {
+            width: 100%;
+            height: 4.5rem;
+            background-color: white;
+            padding: 0 4.5rem;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        nav>img {
+            margin: 1.5rem 0;
+        }
+
+        .searchbar {
+            border-radius: 21px;
+            background-color: #f2f2f2;
+            width: 22.5rem;
+            font-size: 14px;
+            font-weight: 550;
+            padding: 12px 0px 11px 50px;
+            color: #5C5C5C;
+            position: relative;
+            letter-spacing: 0;
+            margin-top: 16px;
+            margin-bottom: 14px;
+        }
+
+        .searchbar img {
+            position: absolute;
+            top: 10px;
+            left: 14px;
+        }
+
+        nav>span {
+            color: #2e2e2e;
+            font-weight: 500;
+            font-size: 1rem;
+            margin-top: 27px;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .blue {
+            color: #2F6CE5;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        nav span svg {
+            position: absolute;
+            bottom: 8px;
+            cursor: pointer;
+            margin-left: 7px;
+        }
+
+        .intro {
+            width: 100%;
+            height: 440px;
+            position: relative;
+            background-image: url('Rectangle 2.svg');
+        }
+
+        .screen {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 100;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.6));
+            top: 0;
+            padding: 286px 0 80px 200px;
+            color: white;
+        }
+
+        .screen span:first-child {
+            display: block;
+            font-size: 36px;
+            font-weight: 600;
+        }
+
+        .screen span:last-child {
+            display: block;
+            font-size: 18px;
+            font-weight: 300;
+        }
+
+        .panel {
+            margin: 40px 200px 12px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .panel .sec1 {
+            display: flex;
+            gap: 20px;
+            font-size: 1rem;
+            color: #8A8A8A;
+        }
+
+        .panel .sec1 span {
+            cursor: pointer;
+        }
+
+        .panel .sec1 .active {
+            color: black;
+            margin-bottom: -14px;
+            border-bottom: black 2px solid;
+        }
+
+        .panel .sec2 {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .panel .sec2 button {
+            font-size: 15px;
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-weight: 500;
+            height: 36px;
+            width: 133px;
+            padding: 0.5rem 0 0.5rem 0.75rem;
+            background-color: #EDEEF0;
+            border-radius: 4px;
+            outline: none;
+            border: none;
+            position: relative;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .panel .sec2 button svg {
+            position: absolute;
+            right: 12.42px;
+            bottom: 15.25px;
+        }
+
+        .panel .sec2 button:last-child {
+            width: 125px;
+            padding: 0.5rem 0 0.5rem 38px;
+            color: white;
+            background-color: #2F6CE5;
+        }
+
+        .panel .sec2 button:last-child svg {
+            position: absolute;
+            bottom: 12.5px;
+            left: 10px;
+        }
+
+        .panel+hr {
+            width: 1040px;
+            border-style: solid;
+            color: #e0e0e0;
+            border-width: 0.5px;
+        }
+
+        .content {
+            margin: 28px 200px 98px;
+            display: flex;
+            gap: 105px;
+        }
+
+        .reviews {
+            width: 692px;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .review {
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .review .title {
+            padding: 20px;
+            padding-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .review .heading {
+            font-size: 22px;
+            font-weight: 550;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .review .heading span {
+            max-width: 526px;
+        }
+
+        .review .heading div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 36px;
+            height: 2rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .review .heading div:focus-visible {
+            background-color: #BFBFC0;
+        }
+
+        .review .description {
+            display: block;
+            font-size: 19px;
+            font-weight: 350;
+            padding: 0px 20px 2rem;
+            color: #5C5C5C;
+        }
+
+        .details {
+            margin: 20px;
+            margin-top: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .person {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            font-weight: 650;
+        }
+
+        .details .person img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+        }
+
+        .details>div:last-child {
+            display: flex;
+            gap: 40px;
+            justify-content: space-between;
+        }
+
+        .reviews .views {
+            font-size: 14px;
+            font-weight: 450;
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .review .share {
+            width: 42px;
+            height: 36px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #EDEEF0;
+            border-radius: 2px;
+        }
+
+        .review .dateplace {
+            font-size: 15px;
+            font-weight: 600;
+            display: flex;
+            gap: 70.17px;
+            margin-left: 20px;
+            margin-bottom: 1rem;
+        }
+
+        .review .date {
+            display: flex;
+            gap: 6.5px;
+            align-items: center;
+        }
+
+        .review .date svg {
+            padding: 0.83px 0 2.5px;
+        }
+
+        .review .place {
+            display: flex;
+            gap: 8.17px;
+            align-items: center;
+        }
+
+        .review .place svg {
+            padding: 1.67px 0;
+        }
+
+        .review .visitwebsite {
+            margin: 0 20px 2rem;
+            text-align: center;
+            border-radius: 0.5rem;
+            border: 1px solid #A9AEB8;
+            padding: 12px 0;
+            font-size: 13px;
+            font-weight: 600;
+            color: #E56135;
+            cursor: pointer;
+        }
+
+        .review .workplace {
+            font-size: 15px;
+            font-weight: 600;
+            display: flex;
+            gap: 44.17px;
+            margin-left: 20px;
+            margin-bottom: 1rem;
+        }
+
+        .review .work {
+            display: flex;
+            gap: 5.67px;
+            align-items: center;
+        }
+
+        .review .work svg {
+            padding: 1.67px 0 2.5px;
+        }
+
+        .review .apply {
+            margin: 0 20px 2rem;
+            text-align: center;
+            border-radius: 10px;
+            border: 1px solid #A9AEB8;
+            padding: 12px 0;
+            font-size: 13px;
+            font-weight: 600;
+            color: #02B875;
+            cursor: pointer;
+        }
+
+        .location {
+            width: 243px;
+            margin-top: 27px;
+            overflow: hidden;
+        }
+
+        .location .current {
+            padding: 0px 2.5px 10px 3.75px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .location .current div {
+            display: flex;
+            align-items: center;
+        }
+
+        .location .current svg {
+            cursor: pointer;
+        }
+
+        .location .current svg:first-child {
+            margin-right: 7.75px;
+        }
+
+        .location .current input {
+            width: 124px;
+            font-size: 14px;
+            font-weight: 400;
+            outline: none;
+            border: none;
+            font-family: 'IBM Plex Sans', sans-serif;
+        }
+
+        .location hr {
+            border: 1px rgba(184, 184, 184, 1) solid;
+        }
+
+        .location .toimprove {
+            margin-top: 2rem;
+            padding: 0 13px 0 23px;
+            position: relative;
+            font-size: 12px;
+            font-weight: 400;
+            opacity: 0.5;
+        }
+
+        .location .toimprove svg {
+            position: absolute;
+            left: 1.33px;
+            top: 2.33px;
+        }
+
+        .overlay {
+            height: 100%;
+            width: 100%;
+            /* display: none; */
+            position: fixed;
+            z-index: 500;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .overlay>div {
+            position: absolute;
+            top: 186px;
+            left: 352px;
+            overflow: hidden;
+            background-color: white;
+            box-shadow: 0 0.5rem 1.5rem 0 rgba(0, 0, 0, 0.25);
+            border-radius: 0.5rem;
+            width: 736px;
+            height: 513px;
+        }
+
+        .overlay .motto {
+            background-color: #EFFFF4;
+            width: 100%;
+            height: 50px;
+            text-align: center;
+            padding: 17px 0;
+            color: #008A45;
+            font-size: 14px;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .overlay .section {
+            padding: 1.5rem 36px 36px;
+            display: flex;
+            gap: 1.5rem;
+            justify-content: space-between;
+        }
+
+        .overlay .section .sec1 {
+            width: 20rem;
+            height: 403px;
+        }
+
+        .overlay .section .sec1 span {
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+
+        .overlay .sec1 form {
+            margin-top: 1.5rem;
+            border-radius: 2px;
+        }
+
+        .overlay .sec1 form input {
+            padding: 15px 0 15px 12px;
+            text-align: left;
+            border: #D9D9DB 1px solid;
+            background-color: #F7F8FA;
+        }
+
+        .overlay .sec1 form input {
+            width: 20rem;
+            height: 46px;
+        }
+
+        .overlay .sec1 form .name {
+            display: flex;
+            width: 20rem;
+            height: 46px;
+        }
+
+        .overlay .sec1 form .name input {
+            width: 50%;
+        }
+
+        .overlay .sec1 form .password {
+            position: relative;
+        }
+
+        .overlay .sec1 form .password svg {
+            position: absolute;
+            right: 18.75px;
+            top: 17.37px;
+            cursor: pointer;
+        }
+
+        .overlay .sec1 form button {
+            margin-top: 19px;
+            border-radius: 20px;
+            background-color: #2F6CE5;
+            color: white;
+            width: 100%;
+            padding: 12px 0;
+            text-align: center;
+            font-size: 14px;
+            font-family: "IBM Plex Sans", sans-serif;
+            font-weight: 600;
+            outline: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .overlay .fb,
+        .overlay .google {
+            padding: 11px 0;
+            text-align: center;
+            margin-top: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border: #D9D9DB 1px solid;
+            cursor: pointer;
+            border-radius: 2px;
+        }
+
+        .overlay .fb {
+            margin-top: 1.5rem;
+        }
+
+        .overlay .fb span,
+        .overlay .google span {
+            font-size: 14px !important;
+            font-weight: 450 !important;
+        }
+
+        .overlay .sec2 {
+            width: 20rem;
+            height: 396px;
+            text-align: right;
+            padding-top: 7px;
+        }
+
+        .overlay .sec2 .jumper {
+            font-size: 13px;
+        }
+
+        .overlay .sec2 img {
+            margin-top: 51.4px;
+            margin-right: 31.04px;
+            margin-bottom: 55px;
+        }
+
+        .overlay .sec2>span:last-child {
+            display: block;
+            font-size: 11px;
+            line-height: 1rem;
+            letter-spacing: -0.08px;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .createaccount{
+            position: relative;
+        }
+
+        .createaccount > svg{
+            position: absolute;
+            top:-14.33px;
+            right: -11.67px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="overlay hide">
+        <div class="createaccount">
+            <div class="motto">Let's learn, share & inspire each other with our passion for computer engineering. Sign
+                up now 🤘🏼</div>
+            <div class="section">
+                <div class="sec1">
+                    <span>Create Account</span>
+                    <form>
+                        <div class="name">
+                            <input type="text" id="fname" placeholder="First Name" required>
+                            <input type="text" id="lname" placeholder="Last Name" required>
+                        </div>
+                        <input type="email" id="email" placeholder="Email" required>
+                        <div class="password">
+                            <input type="password" id="pswd" placeholder="Password" required>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                                <g fill="none" stroke="#8A8A8A" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="1.5">
+                                    <path d="M15 12a3 3 0 1 1-6 0a3 3 0 0 1 6 0" />
+                                    <path
+                                        d="M2 12c1.6-4.097 5.336-7 10-7s8.4 2.903 10 7c-1.6 4.097-5.336 7-10 7s-8.4-2.903-10-7" />
+                                </g>
+                            </svg>
+                        </div>
+                        <input type="password" id="cpswd" placeholder="Confirm Password" required>
+                        <button type="submit" id="submit">Create Account</button>
+                    </form>
+                    <div class="fb">
+                        <img src="f_logo_RGB-Blue_1024.svg" alt="facebook">
+                        <span>Sign up with Facebook</span>
+                    </div>
+                    <div class="google">
+                        <img src="search.svg" alt="google">
+                        <span>Sign up with Google</span>
+                    </div>
+                </div>
+                <div class="sec2">
+                    <span class="jumper">Already have an account? <span class="blue">Sign In</span></span>
+                    <img src="photo.svg" alt="photo">
+                    <span>By signing up, you agree to our Terms & conditions, Privacy policy</span>
+                </div>
+            </div>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M12 0.333313C5.54838 0.333313 0.333374 5.54831 0.333374 12C0.333374 18.4516 5.54838 23.6666 12 23.6666C18.4517 23.6666 23.6667 18.4516 23.6667 12C23.6667 5.54831 18.4517 0.333313 12 0.333313ZM17.8334 16.1883L16.1884 17.8333L12 13.645L7.81171 17.8333L6.16671 16.1883L10.355 12L6.16671 7.81164L7.81171 6.16665L12 10.355L16.1884 6.16665L17.8334 7.81164L13.645 12L17.8334 16.1883Z"
+                    fill="white" />
+            </svg>
+        </div>
+    </div>
+    <header>
+        <nav>
+            <img src="whole.svg" alt="logo">
+            <div class="searchbar">Search for your favorite groups in ATG
+                <img src="baseline-search-24px.svg" alt="search icon">
+            </div>
+            <span>Create account. <span class="blue">It's free!</span><svg width="10" height="5" viewBox="0 0 10 5"
+                    fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0L5 5L10 0H0Z" fill="#2E2E2E" />
+                </svg>
+            </span>
+        </nav>
+    </header>
+    <main>
+        <div class="intro">
+            <div class="screen">
+                <span>Computer Engineering</span>
+                <span>142,765 Computer Engineers follow this</span>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="sec1">
+                <span class="active">All Posts(32)</span>
+                <span>Article</span>
+                <span>Event</span>
+                <span>Education</span>
+                <span>Job</span>
+            </div>
+            <div class="sec2">
+                <button>Write a Post<svg width="9.17" height="4.58" viewBox="0 0 10 5" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 0L5 5L10 0H0Z" fill="#2E2E2E" />
+                    </svg>
+                </button>
+                <button><svg width="22" height="13" viewBox="0 0 22 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M7.33333 5.16671H4.58333V2.41671H2.75V5.16671H0V7.00004H2.75V9.75004H4.58333V7.00004H7.33333V5.16671ZM16.5 6.08337C18.0217 6.08337 19.2408 4.85504 19.2408 3.33337C19.2408 1.81171 18.0217 0.583374 16.5 0.583374C16.2067 0.583374 15.9225 0.629207 15.6658 0.711707C16.1883 1.45421 16.4908 2.35254 16.4908 3.33337C16.4908 4.31421 16.1792 5.20337 15.6658 5.95504C15.9225 6.03754 16.2067 6.08337 16.5 6.08337ZM11.9167 6.08337C13.4383 6.08337 14.6575 4.85504 14.6575 3.33337C14.6575 1.81171 13.4383 0.583374 11.9167 0.583374C10.395 0.583374 9.16667 1.81171 9.16667 3.33337C9.16667 4.85504 10.395 6.08337 11.9167 6.08337ZM17.985 8.06337C18.7458 8.73254 19.25 9.58504 19.25 10.6667V12.5H22V10.6667C22 9.25504 19.8275 8.38421 17.985 8.06337ZM11.9167 7.91671C10.0833 7.91671 6.41667 8.83337 6.41667 10.6667V12.5H17.4167V10.6667C17.4167 8.83337 13.75 7.91671 11.9167 7.91671Z"
+                            fill="white" />
+                    </svg>
+                    Join Group</button>
+            </div>
+        </div>
+        <hr>
+        <div class="content">
+            <div class="reviews">
+                <div class="review">
+                    <img src="Rectangle 5.svg" alt="photo">
+                    <div class="title">✍️ Article</div>
+                    <div class="heading">
+                        <span>What if famous brands had regular fonts? Meet RegulaBrands!</span>
+                        <div>
+                            <svg width="20" height="6" viewBox="0 0 20 6" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M14.6667 2.99996C14.6667 4.28329 15.7167 5.33329 17 5.33329C18.2834 5.33329 19.3334 4.28329 19.3334 2.99996C19.3334 1.71663 18.2834 0.666626 17 0.666626C15.7167 0.666626 14.6667 1.71663 14.6667 2.99996ZM12.3334 2.99996C12.3334 1.71663 11.2834 0.666626 10 0.666626C8.71671 0.666626 7.66671 1.71662 7.66671 2.99996C7.66671 4.28329 8.71671 5.33329 10 5.33329C11.2834 5.33329 12.3334 4.28329 12.3334 2.99996ZM5.33337 2.99996C5.33337 1.71662 4.28337 0.666625 3.00004 0.666625C1.71671 0.666625 0.666708 1.71662 0.666708 2.99996C0.666708 4.28329 1.71671 5.33329 3.00004 5.33329C4.28337 5.33329 5.33337 4.28329 5.33337 2.99996Z"
+                                    fill="black" />
+                            </svg>
+                        </div>
+                    </div>
+                    <span class="description">I've worked in UX for the better part of a decade. From now on, I plan to
+                        rei…</span>
+                    <div class="details">
+                        <div class="person">
+                            <img src="Rectangle 3.svg" alt="photo">
+                            <span>Sarthak Kamra</span>
+                        </div>
+                        <div>
+                            <div class="views"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                                    viewBox="0 0 24 24">
+                                    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="1.5">
+                                        <path d="M15 12a3 3 0 1 1-6 0a3 3 0 0 1 6 0" />
+                                        <path
+                                            d="M2 12c1.6-4.097 5.336-7 10-7s8.4 2.903 10 7c-1.6 4.097-5.336 7-10 7s-8.4-2.903-10-7" />
+                                    </g>
+                                </svg>
+                                <span><span class="value">1.4k</span> views</span>
+                            </div>
+                            <div class="share"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M11.5 11.06C10.93 11.06 10.42 11.285 10.03 11.6375L4.6825 8.525C4.72 8.3525 4.75 8.18 4.75 8C4.75 7.82 4.72 7.6475 4.6825 7.475L9.97 4.3925C10.375 4.7675 10.9075 5 11.5 5C12.745 5 13.75 3.995 13.75 2.75C13.75 1.505 12.745 0.5 11.5 0.5C10.255 0.5 9.25 1.505 9.25 2.75C9.25 2.93 9.28 3.1025 9.3175 3.275L4.03 6.3575C3.625 5.9825 3.0925 5.75 2.5 5.75C1.255 5.75 0.25 6.755 0.25 8C0.25 9.245 1.255 10.25 2.5 10.25C3.0925 10.25 3.625 10.0175 4.03 9.6425L9.37 12.7625C9.3325 12.92 9.31 13.085 9.31 13.25C9.31 14.4575 10.2925 15.44 11.5 15.44C12.7075 15.44 13.69 14.4575 13.69 13.25C13.69 12.0425 12.7075 11.06 11.5 11.06Z"
+                                        fill="#2D2D2D" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review">
+                    <img src="Rectangle 6.svg" alt="photo">
+                    <div class="title">🔬 Education</div>
+                    <div class="heading">
+                        <span>Tax Benefits for Investment under National Pension Scheme launched by Government</span>
+                        <div>
+                            <svg width="20" height="6" viewBox="0 0 20 6" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M14.6667 2.99996C14.6667 4.28329 15.7167 5.33329 17 5.33329C18.2834 5.33329 19.3334 4.28329 19.3334 2.99996C19.3334 1.71663 18.2834 0.666626 17 0.666626C15.7167 0.666626 14.6667 1.71663 14.6667 2.99996ZM12.3334 2.99996C12.3334 1.71663 11.2834 0.666626 10 0.666626C8.71671 0.666626 7.66671 1.71662 7.66671 2.99996C7.66671 4.28329 8.71671 5.33329 10 5.33329C11.2834 5.33329 12.3334 4.28329 12.3334 2.99996ZM5.33337 2.99996C5.33337 1.71662 4.28337 0.666625 3.00004 0.666625C1.71671 0.666625 0.666708 1.71662 0.666708 2.99996C0.666708 4.28329 1.71671 5.33329 3.00004 5.33329C4.28337 5.33329 5.33337 4.28329 5.33337 2.99996Z"
+                                    fill="black" />
+                            </svg>
+                        </div>
+                    </div>
+                    <span class="description">I've worked in UX for the better part of a decade. From now on, I plan to
+                        rei…</span>
+                    <div class="details">
+                        <div class="person">
+                            <img src="Rectangle 4.svg" alt="photo">
+                            <span>Sarah West</span>
+                        </div>
+                        <div>
+                            <div class="views"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                                    viewBox="0 0 24 24">
+                                    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="1.5">
+                                        <path d="M15 12a3 3 0 1 1-6 0a3 3 0 0 1 6 0" />
+                                        <path
+                                            d="M2 12c1.6-4.097 5.336-7 10-7s8.4 2.903 10 7c-1.6 4.097-5.336 7-10 7s-8.4-2.903-10-7" />
+                                    </g>
+                                </svg>
+                                <span><span class="value">1.4k</span> views</span>
+                            </div>
+                            <div class="share"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M11.5 11.06C10.93 11.06 10.42 11.285 10.03 11.6375L4.6825 8.525C4.72 8.3525 4.75 8.18 4.75 8C4.75 7.82 4.72 7.6475 4.6825 7.475L9.97 4.3925C10.375 4.7675 10.9075 5 11.5 5C12.745 5 13.75 3.995 13.75 2.75C13.75 1.505 12.745 0.5 11.5 0.5C10.255 0.5 9.25 1.505 9.25 2.75C9.25 2.93 9.28 3.1025 9.3175 3.275L4.03 6.3575C3.625 5.9825 3.0925 5.75 2.5 5.75C1.255 5.75 0.25 6.755 0.25 8C0.25 9.245 1.255 10.25 2.5 10.25C3.0925 10.25 3.625 10.0175 4.03 9.6425L9.37 12.7625C9.3325 12.92 9.31 13.085 9.31 13.25C9.31 14.4575 10.2925 15.44 11.5 15.44C12.7075 15.44 13.69 14.4575 13.69 13.25C13.69 12.0425 12.7075 11.06 11.5 11.06Z"
+                                        fill="#2D2D2D" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review">
+                    <img src="Rectangle 7.svg" alt="photo">
+                    <div class="title">🗓️ Meetup</div>
+                    <div class="heading">
+                        <span>Finance & Investment Elite Social Mixer @Lujiazui</span>
+                        <div>
+                            <svg width="20" height="6" viewBox="0 0 20 6" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M14.6667 2.99996C14.6667 4.28329 15.7167 5.33329 17 5.33329C18.2834 5.33329 19.3334 4.28329 19.3334 2.99996C19.3334 1.71663 18.2834 0.666626 17 0.666626C15.7167 0.666626 14.6667 1.71663 14.6667 2.99996ZM12.3334 2.99996C12.3334 1.71663 11.2834 0.666626 10 0.666626C8.71671 0.666626 7.66671 1.71662 7.66671 2.99996C7.66671 4.28329 8.71671 5.33329 10 5.33329C11.2834 5.33329 12.3334 4.28329 12.3334 2.99996ZM5.33337 2.99996C5.33337 1.71662 4.28337 0.666625 3.00004 0.666625C1.71671 0.666625 0.666708 1.71662 0.666708 2.99996C0.666708 4.28329 1.71671 5.33329 3.00004 5.33329C4.28337 5.33329 5.33337 4.28329 5.33337 2.99996Z"
+                                    fill="black" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="dateplace">
+                        <span class="date"><svg width="16" height="18" viewBox="0 0 16 18" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M13.8333 2.49992H13V0.833252H11.3333V2.49992H4.66667V0.833252H3V2.49992H2.16667C1.24167 2.49992 0.508333 3.24992 0.508333 4.16659L0.5 15.8333C0.5 16.7499 1.24167 17.4999 2.16667 17.4999H13.8333C14.75 17.4999 15.5 16.7499 15.5 15.8333V4.16659C15.5 3.24992 14.75 2.49992 13.8333 2.49992ZM13.8333 15.8333H2.16667V6.66658H13.8333V15.8333ZM3.83333 8.33325H8V12.4999H3.83333V8.33325Z"
+                                    fill="black" />
+                            </svg>
+                            <span>Fri, 12 Oct, 2018</span></span>
+                        <span class="place"><svg width="12" height="18" viewBox="0 0 12 18" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M5.99996 0.666748C2.77496 0.666748 0.166626 3.27508 0.166626 6.50008C0.166626 10.8751 5.99996 17.3334 5.99996 17.3334C5.99996 17.3334 11.8333 10.8751 11.8333 6.50008C11.8333 3.27508 9.22496 0.666748 5.99996 0.666748ZM1.83329 6.50008C1.83329 4.20008 3.69996 2.33342 5.99996 2.33342C8.29996 2.33342 10.1666 4.20008 10.1666 6.50008C10.1666 8.90008 7.76663 12.4918 5.99996 14.7334C4.26663 12.5084 1.83329 8.87508 1.83329 6.50008Z"
+                                    fill="black" />
+                                <path
+                                    d="M5.99996 8.58341C7.15055 8.58341 8.08329 7.65067 8.08329 6.50008C8.08329 5.34949 7.15055 4.41675 5.99996 4.41675C4.84937 4.41675 3.91663 5.34949 3.91663 6.50008C3.91663 7.65067 4.84937 8.58341 5.99996 8.58341Z"
+                                    fill="black" />
+                            </svg>
+                            <span>Ahmedabad, India</span>
+                        </span>
+                    </div>
+                    <div class="visitwebsite">Visit Website</div>
+                    <div class="details">
+                        <div class="person">
+                            <img src="ronal.svg" alt="photo">
+                            <span>Ronal Jones</span>
+                        </div>
+                        <div>
+                            <div class="views"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                                    viewBox="0 0 24 24">
+                                    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="1.5">
+                                        <path d="M15 12a3 3 0 1 1-6 0a3 3 0 0 1 6 0" />
+                                        <path
+                                            d="M2 12c1.6-4.097 5.336-7 10-7s8.4 2.903 10 7c-1.6 4.097-5.336 7-10 7s-8.4-2.903-10-7" />
+                                    </g>
+                                </svg>
+                                <span><span class="value">1.4k</span> views</span>
+                            </div>
+                            <div class="share"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M11.5 11.06C10.93 11.06 10.42 11.285 10.03 11.6375L4.6825 8.525C4.72 8.3525 4.75 8.18 4.75 8C4.75 7.82 4.72 7.6475 4.6825 7.475L9.97 4.3925C10.375 4.7675 10.9075 5 11.5 5C12.745 5 13.75 3.995 13.75 2.75C13.75 1.505 12.745 0.5 11.5 0.5C10.255 0.5 9.25 1.505 9.25 2.75C9.25 2.93 9.28 3.1025 9.3175 3.275L4.03 6.3575C3.625 5.9825 3.0925 5.75 2.5 5.75C1.255 5.75 0.25 6.755 0.25 8C0.25 9.245 1.255 10.25 2.5 10.25C3.0925 10.25 3.625 10.0175 4.03 9.6425L9.37 12.7625C9.3325 12.92 9.31 13.085 9.31 13.25C9.31 14.4575 10.2925 15.44 11.5 15.44C12.7075 15.44 13.69 14.4575 13.69 13.25C13.69 12.0425 12.7075 11.06 11.5 11.06Z"
+                                        fill="#2D2D2D" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review">
+                    <img src="Rectangle 5.svg" alt="photo">
+                    <div class="title">💼️ Job</div>
+                    <div class="heading">
+                        <span>Software Developer</span>
+                        <div>
+                            <svg width="20" height="6" viewBox="0 0 20 6" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M14.6667 2.99996C14.6667 4.28329 15.7167 5.33329 17 5.33329C18.2834 5.33329 19.3334 4.28329 19.3334 2.99996C19.3334 1.71663 18.2834 0.666626 17 0.666626C15.7167 0.666626 14.6667 1.71663 14.6667 2.99996ZM12.3334 2.99996C12.3334 1.71663 11.2834 0.666626 10 0.666626C8.71671 0.666626 7.66671 1.71662 7.66671 2.99996C7.66671 4.28329 8.71671 5.33329 10 5.33329C11.2834 5.33329 12.3334 4.28329 12.3334 2.99996ZM5.33337 2.99996C5.33337 1.71662 4.28337 0.666625 3.00004 0.666625C1.71671 0.666625 0.666708 1.71662 0.666708 2.99996C0.666708 4.28329 1.71671 5.33329 3.00004 5.33329C4.28337 5.33329 5.33337 4.28329 5.33337 2.99996Z"
+                                    fill="black" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="workplace">
+                        <span class="work">
+                            <svg width="18" height="17" viewBox="0 0 18 17" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M10.6667 4.00008V2.33341H7.33342V4.00008H10.6667ZM2.33341 5.66675V14.8334H15.6667V5.66675H2.33341ZM15.6667 4.00008C16.5917 4.00008 17.3334 4.74175 17.3334 5.66675V14.8334C17.3334 15.7584 16.5917 16.5001 15.6667 16.5001H2.33341C1.40841 16.5001 0.666748 15.7584 0.666748 14.8334L0.675081 5.66675C0.675081 4.74175 1.40841 4.00008 2.33341 4.00008H5.66675V2.33341C5.66675 1.40841 6.40841 0.666748 7.33342 0.666748H10.6667C11.5917 0.666748 12.3334 1.40841 12.3334 2.33341V4.00008H15.6667Z"
+                                    fill="black" />
+                            </svg>
+                            <span>Innovaccer Analytics Private Ltd.</span></span>
+                        <span class="place"><svg width="12" height="18" viewBox="0 0 12 18" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M5.99996 0.666748C2.77496 0.666748 0.166626 3.27508 0.166626 6.50008C0.166626 10.8751 5.99996 17.3334 5.99996 17.3334C5.99996 17.3334 11.8333 10.8751 11.8333 6.50008C11.8333 3.27508 9.22496 0.666748 5.99996 0.666748ZM1.83329 6.50008C1.83329 4.20008 3.69996 2.33342 5.99996 2.33342C8.29996 2.33342 10.1666 4.20008 10.1666 6.50008C10.1666 8.90008 7.76663 12.4918 5.99996 14.7334C4.26663 12.5084 1.83329 8.87508 1.83329 6.50008Z"
+                                    fill="black" />
+                                <path
+                                    d="M5.99996 8.58341C7.15055 8.58341 8.08329 7.65067 8.08329 6.50008C8.08329 5.34949 7.15055 4.41675 5.99996 4.41675C4.84937 4.41675 3.91663 5.34949 3.91663 6.50008C3.91663 7.65067 4.84937 8.58341 5.99996 8.58341Z"
+                                    fill="black" />
+                            </svg>
+                            <span>Noida, India</span>
+                        </span>
+                    </div>
+                    <div class="apply">Apply on Timesjobs</div>
+                    <div class="details">
+                        <div class="person">
+                            <img src="Rectangle 3 (1).svg" alt="photo">
+                            <span>Joseph Gray</span>
+                        </div>
+                        <div>
+                            <div class="views"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em"
+                                    viewBox="0 0 24 24">
+                                    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="1.5">
+                                        <path d="M15 12a3 3 0 1 1-6 0a3 3 0 0 1 6 0" />
+                                        <path
+                                            d="M2 12c1.6-4.097 5.336-7 10-7s8.4 2.903 10 7c-1.6 4.097-5.336 7-10 7s-8.4-2.903-10-7" />
+                                    </g>
+                                </svg>
+                                <span><span class="value">1.4k</span> views</span>
+                            </div>
+                            <div class="share"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M11.5 11.06C10.93 11.06 10.42 11.285 10.03 11.6375L4.6825 8.525C4.72 8.3525 4.75 8.18 4.75 8C4.75 7.82 4.72 7.6475 4.6825 7.475L9.97 4.3925C10.375 4.7675 10.9075 5 11.5 5C12.745 5 13.75 3.995 13.75 2.75C13.75 1.505 12.745 0.5 11.5 0.5C10.255 0.5 9.25 1.505 9.25 2.75C9.25 2.93 9.28 3.1025 9.3175 3.275L4.03 6.3575C3.625 5.9825 3.0925 5.75 2.5 5.75C1.255 5.75 0.25 6.755 0.25 8C0.25 9.245 1.255 10.25 2.5 10.25C3.0925 10.25 3.625 10.0175 4.03 9.6425L9.37 12.7625C9.3325 12.92 9.31 13.085 9.31 13.25C9.31 14.4575 10.2925 15.44 11.5 15.44C12.7075 15.44 13.69 14.4575 13.69 13.25C13.69 12.0425 12.7075 11.06 11.5 11.06Z"
+                                        fill="#2D2D2D" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="location">
+                <div class="current">
+                    <div>
+                        <svg width="12" height="16" viewBox="0 0 12 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M6 0.5C3.0975 0.5 0.75 2.8475 0.75 5.75C0.75 9.6875 6 15.5 6 15.5C6 15.5 11.25 9.6875 11.25 5.75C11.25 2.8475 8.9025 0.5 6 0.5ZM2.25 5.75C2.25 3.68 3.93 2 6 2C8.07 2 9.75 3.68 9.75 5.75C9.75 7.91 7.59 11.1425 6 13.16C4.44 11.1575 2.25 7.8875 2.25 5.75Z"
+                                fill="black" />
+                            <path
+                                d="M6 7.625C7.03553 7.625 7.875 6.78553 7.875 5.75C7.875 4.71447 7.03553 3.875 6 3.875C4.96447 3.875 4.125 4.71447 4.125 5.75C4.125 6.78553 4.96447 7.625 6 7.625Z"
+                                fill="black" />
+                        </svg>
+                        <input type="text" placeholder="Enter your location" value="Noida, India"></span>
+                    </div>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M0.5 12.375V15.5H3.625L12.8417 6.28334L9.71667 3.15834L0.5 12.375ZM15.2583 3.86667C15.5833 3.54167 15.5833 3.01667 15.2583 2.69167L13.3083 0.741675C12.9833 0.416675 12.4583 0.416675 12.1333 0.741675L10.6083 2.26667L13.7333 5.39167L15.2583 3.86667Z"
+                            fill="black" />
+                    </svg>
+                </div>
+                <hr>
+                <div class="toimprove"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M6.33337 9.00004H7.66671V10.3334H6.33337V9.00004ZM6.33337 3.66671H7.66671V7.66671H6.33337V3.66671ZM6.99337 0.333374C3.31337 0.333374 0.333374 3.32004 0.333374 7.00004C0.333374 10.68 3.31337 13.6667 6.99337 13.6667C10.68 13.6667 13.6667 10.68 13.6667 7.00004C13.6667 3.32004 10.68 0.333374 6.99337 0.333374ZM7.00004 12.3334C4.05337 12.3334 1.66671 9.94671 1.66671 7.00004C1.66671 4.05337 4.05337 1.66671 7.00004 1.66671C9.94671 1.66671 12.3334 4.05337 12.3334 7.00004C12.3334 9.94671 9.94671 12.3334 7.00004 12.3334Z"
+                            fill="black" />
+                    </svg>
+                    Your location will help us serve better and extend a personalised experience.</div>
+            </div>
+        </div>
+    </main>
+    <script>
+        const a = document.querySelectorAll('.panel .sec1 span');
+        a.forEach((e) => {
+            e.addEventListener('click', () => {
+                e.parentElement.querySelector('.active').classList.remove('active');
+                e.classList.add('active');
+            });
+        });
+
+        const b = document.querySelector('nav .blue');
+        b.addEventListener('click', () => {
+            document.querySelector('.overlay').classList.toggle('hide');
+        });
+    </script>
+</body>
+
+</html>
