@@ -220,7 +220,7 @@
             max-width: 526px;
         }
 
-        .review .heading div {
+        .review .heading>div {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -228,6 +228,7 @@
             height: 2rem;
             border-radius: 4px;
             cursor: pointer;
+            position: relative;
         }
 
         .review .heading div:focus-visible {
@@ -579,6 +580,7 @@
             top: -37.66px;
             right: -11.67px;
             opacity: 0.8;
+            cursor: pointer;
         }
 
         .signin .section {
@@ -596,6 +598,26 @@
             display: block;
             text-align: center;
             margin-top: 23px;
+        }
+
+        .dropdown {
+            width: 10rem !important;
+            height: 102px !important;
+            border-radius: 4px !important;
+            background-color: white;
+            z-index: 300;
+            padding: 4px 0;
+            flex-direction: column;
+            position: absolute;
+            top: 36px;
+            right: -1px;
+            box-shadow: 0 2px 0.5rem 0 rgba(0, 0, 0, 0.16), 0 0 2px 0 rgba(0, 0, 0, 0.8);
+        }
+
+        .dropdown div {
+            padding: 7px 0 7px 12px;
+            font-size: 14px;
+            font-weight: 400;
         }
     </style>
 </head>
@@ -993,6 +1015,35 @@
         b.addEventListener('click', () => {
             document.querySelector('.overlay').classList.toggle('hide');
             document.querySelector('body').style.overflowY = 'hidden';
+        });
+
+        const dots = document.querySelectorAll('.review .heading > div');
+        dots.forEach((dot) => {
+            dot.addEventListener('click', () => {
+                if (dot.classList.contains('active')===true) {
+                    dot.style.backgroundColor = 'white';
+                    dot.removeChild(dot.querySelector('.dropdown'));
+                }
+                else {
+                    dot.style.backgroundColor = '#BFBFC0';
+                    const menu = document.createElement('div');
+                    menu.classList.add('dropdown');
+                    const edit = document.createElement('div');
+                    edit.innerText = 'Edit';
+                    const report = document.createElement('div');
+                    report.innerText = 'Report';
+                    const op3 = document.createElement('div');
+                    op3.innerText = 'Option 3';
+                    menu.appendChild(edit);
+                    menu.appendChild(report);
+                    menu.appendChild(op3);
+                    dot.appendChild(menu);
+                }
+                dot.classList.toggle('active');
+                dot.querySelector('.dropdown').addEventListener('click',(Event)=>{
+                    Event.stopPropagation();
+                });
+            });
         });
 
         const cross = document.querySelectorAll('.overlay>div>svg');
